@@ -95,8 +95,8 @@ fixed-center = false
 bottom = true
 background = ${colors.background}
 foreground = ${colors.foreground}
-dpi-x = 96
-dpi-y = 96
+ dpi-x = 96
+ dpi-y = 96
 line-size = 1
 line-color = #f00
 
@@ -231,14 +231,17 @@ label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
 label-focused = %index%
-label-focused-background = ${colors.background-alt}
+label-focused-foreground = #012773
+label-focused-background = #32a852
+; ${colors.background-alt}
 label-focused-underline= ${colors.primary}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %index%
 label-unfocused-padding = 2
-
+label-unfocused-background = #012773
+label-unfocused-foreground = #32a852
 ; visible = Active workspace on unfocused monitor
 label-visible = %index%
 label-visible-background = ${self.label-focused-background}
@@ -247,7 +250,9 @@ label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
 label-urgent = %index%
-label-urgent-background = ${colors.alert}
+label-urgent-background = #7e0085
+label-urgent-foreground = #ffffff
+; ${colors.alert}
 label-urgent-padding = 2
 
 ; Separator in between workspaces
@@ -478,7 +483,8 @@ expand-right = true
 
 format-spacing = 1
 
-label-open = 
+label-open = 
+#
 label-open-foreground = ${colors.secondary}
 label-close =  cancel
 label-close-foreground = ${colors.secondary}

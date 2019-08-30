@@ -12,6 +12,10 @@
 # Variables
 # $i3-theme-window
 
+ hide_edge_borders both
+
+for_window [class="^.*"] border pixel 1
+
 set $mod Mod4
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -33,25 +37,26 @@ exec --no-startup-id feh --bg-scale ~/bg/chicago.jpg
 
 #bind edit config
 bindsym $mod+c exec --no-startup-id atom ~/.config/i3/config
-
+bindsym $mod+m exec --no-startup-id spotify
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 10
 #font pango:monospace 10
-font pango: System San Francisco Display 20
+font pango: System San Francisco Display 10
 
 # thin borders
 hide_edge_borders both
 # use window title, but no border
 bindsym $mod+t border normal 0
+#borders none
 # use no window title and a thick border
 bindsym $mod+y border pixel 1
 # use neither window title nor border
 bindsym $mod+u border none
 bindsym $mod+shift+b exec i3-msg border toggle
-
+default_border none
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
@@ -84,7 +89,8 @@ bindsym $mod+Ctrl+m exec pavucontrol
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec terminology
+bindsym $mod+Return exec kitty
+#alacritty
 #gnome-terminal
 #terminator
 #i3-sensible-terminal
@@ -274,4 +280,4 @@ bindsym $mod+z exec --no-startup-id morc_menu
 
 
 
-font pango: System San Francisco Display 20
+font pango: System San Francisco Display 10
