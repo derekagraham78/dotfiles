@@ -1,0 +1,44 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "pixel",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1008,
+       "width": 476,
+       "x": 0,
+       "y": 0
+    },
+    "name": "[Solved] i3 restore layout not working / Applications & Desktop Environments / Arch Linux Forums - Mozilla Firefox",
+    "percent": 0.8,
+    "swallows": [
+       {
+        "class": "^firefox$",
+        "instance": "^Navigator$"
+
+               }
+    ],
+    "type": "con"
+}
+
+{
+    "border": "pixel",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1008,
+       "width": 382,
+       "x": 1536,
+       "y": 32
+    },
+    "name": "Fractal",
+    "percent": 0.2,
+    "swallows": [
+       {
+        "class": "^Fractal$",
+        "instance": "^fractal$",
+        "title": "^Fractal$"
+       }
+    ],
+    "type": "con"
+}

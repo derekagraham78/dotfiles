@@ -8,13 +8,14 @@
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
-
+default_orientation horizontal
 # Variables
 # $i3-theme-window
 
  hide_edge_borders both
 
 for_window [class="^.*"] border pixel 1
+
 
 set $mod Mod4
 # Define names for default workspaces for which we configure key bindings later on.
@@ -44,7 +45,7 @@ bindsym $mod+m exec --no-startup-id spotify
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 10
 #font pango:monospace 10
-font pango: System San Francisco Display 10
+font pango: System San Francisco Display 20
 
 # thin borders
 hide_edge_borders both
@@ -248,6 +249,7 @@ bindsym $mod+r mode "resize"
 #}
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # Auto Loading of Regular Apps
+# exec --no-startup-id i3-msg "workspace 1; append_layout ~/.config/i3/workspace-1.json"
 exec --no-startup-id nextcloud
 exec --no-startup-id clipit
 #parcellite &
@@ -260,16 +262,18 @@ exec --no-startup-id xfce4-power-manager
 exec --no-startup-id  /usr/lib/xfce4/notifyd/xfce4-notifyd
 #exec --no-startup-id volumeicon
 #Auto Start to Worskspace
+for_window [class="Fractal"] move container to workspace $WS4
+exec --no-startup-id fractal
 for_window [class="Firefox"] move container to workspace $WS1
 exec --no-startup-id firefox
 for_window [class="discord"] move container to workspace $WS2
 exec discord
-for_window [class="Skype"] move container to workspace $WS3
-exec skypeforlinux
 for_window [class="Telegram"] move container to workspace $WS3
 exec telegram-desktop
-for_window [class="Riot"] move container to workspace $WS4
-exec riot-desktop
+for_window [class="Skype"] move container to workspace $WS3
+exec skypeforlinux
+#for_window [class="Riot"] move container to workspace $WS4
+#exec riot-desktop
 for_window [class="Spotify"] move container to workspace $WS5
 exec --no-startup-id spotify
 
@@ -280,4 +284,4 @@ bindsym $mod+z exec --no-startup-id morc_menu
 
 
 
-font pango: System San Francisco Display 10
+font pango: System San Francisco Display 20

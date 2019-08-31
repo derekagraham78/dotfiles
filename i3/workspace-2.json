@@ -1,0 +1,86 @@
+// vim:ts=4:sw=4:et
+{
+    // this is a manually added container to restore the vertical split
+    // "layout": "splitv",
+    "percent": 0.5,
+    "type": "con",
+    "nodes": [
+
+        {
+            "border": "pixel",
+            "current_border_width": 2,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 502,
+               "width": 1920,
+               "x": 0,
+               "y": 0
+            },
+            "name": "Activity - Discord",
+            "percent": 1,
+            "swallows": [
+               {
+                "class": "discord",
+                "instance": "discord"
+
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+
+{
+  // splith split container with 2 children
+  "border": "none",
+  "floating": "auto_off",
+  "layout": "splitv",
+  "percent": 0.5,
+  "type": "con",
+  "nodes": [
+        {
+          "border": "pixel",
+          "current_border_width": 2,
+          "floating": "auto_off",
+          "layout": "splitv",
+          "geometry": {
+             "height": 1008,
+             "width": 1920,
+             "x": 0,
+             "y": 32
+          },
+          "name": "Telegram (26)",
+          "percent": 0.5,
+          "swallows": [
+             {
+              "class": "Telegram"
+
+
+             }
+          ],
+          "type": "con"
+      },
+      {
+          "border": "pixel",
+          "current_border_width": 2,
+          "floating": "auto_off",
+//          "layout": "splith",
+          "geometry": {
+             "height": 502,
+             "width": 1920,
+             "x": 0,
+             "y": 0
+          },
+          "name": "Skype",
+          "percent": 0.5,
+          "swallows": [
+             {
+              "class": "^Skype$",
+              "instance": "^skype$"
+
+             }
+          ],
+          "type": "con"
+      }
+  ]
+}
