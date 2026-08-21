@@ -1,0 +1,232 @@
+{
+"$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+"logo": {
+"type": "kitty",
+"source": "/home/grahamd/.config/fastfetch/logo.png",
+"width": 30,
+"height": 15,
+"padding": {
+"top": 1,
+"left": 2
+}
+},
+"display": {
+"color": {
+"keys": "blue"
+},
+"separator": "",
+// Constants are reusable strings referenced by {$1}, {$2}, etc.
+// These contain ANSI escape codes for cursor positioning
+"constants": [
+"██████████████████████████████████████████████████████████████████████████████████████████████████████████", // {$1} - horizontal line for inner borders (108 blocks)
+"\u001b[109D",                                                             // {$2} - move cursor left 109 columns
+"\u001b[109C",                                                             // {$3} - move cursor right 109 columns
+"\u001b[108C",                                                             // {$4} - move cursor right 108 columns
+"██████████████████████████████████████████████████████████████████████████████████████████████████████████" // {$5} - horizontal line for outer borders (108 blocks)
+],
+
+"brightColor": true
+},
+"modules": [
+"break",
+{
+"type": "version",
+"key": "███████████████████{$5}██\u001b[115D",
+"format": "\u001b[1m{#keys} {1} - {2} "
+},
+{
+"type": "os",
+"key": "█  {icon}  \u001b[s{sysname}\u001b[u\u001b[10C█{$3}█{$2}"
+},
+{
+"type": "kernel",
+"key": "█  {icon}  Kernel    █{$3}█{$2}"
+},
+{
+"type": "datetime",
+"key": "█  {icon}  Fetched   █{$3}█{$2}",
+"format": "{year}-{month-pretty}-{day-pretty} {hour-pretty}:{minute-pretty}:{second-pretty} {timezone-name}"
+},
+
+// Hardware section with cyan color theme
+{
+"type": "custom",
+"key": "█{#cyan}██████████████████{$1}█{#keys}█\u001b[112D",
+"format": "{#bright_cyan} Hardware "
+},
+{
+  "type": "board",
+  "key": "█{#cyan}█ {icon}  BOARD     █{$4}█{#keys}█{$2}",
+  "format": "{vendor} {name}"
+},
+{
+"type": "bios",
+"key": "█{#cyan}█ {icon}  BIOS      █{$4}█{#keys}█{$2}",
+},
+{
+"type": "memory",
+"key": "█{#cyan}█ {icon}  MEMORY    █{$4}█{#keys}█{$2}",
+"percent": {
+    "type": 3
+}
+},
+{
+"type": "command",
+"key": "█{#cyan}█   RAM       █{$4}█{#keys}█{$2}",
+"text": "python3 -c \"import glob; f=glob.glob('/sys/bus/i2c/drivers/ee1004/*/eeprom'); s=open(f[0],'rb').read() if f else b''; cl=s[401]*0.125 if len(s)>405 else 10.0; print(f'{len(f)*16} GiB ({len(f)}x16GB) DDR4-3600 MT/s - CL{round(cl/0.5555)}-{round(s[402]*0.125/0.5555)}-{round(s[403]*0.125/0.5555)}-{round(s[405]*0.125/0.5555)} ({cl:.1f} ns latency)')\""
+},
+{
+"type": "cpu",
+"key": "█{#cyan}█ {icon}  CPU       █{$4}█{#keys}█{$2}",
+"showPeCoreCount": true,
+"tempSensor": "/sys/class/hwmon/hwmon6/temp1_input",
+"temp": true,
+},
+{
+"type": "cpuusage",
+"key": "█{#cyan}█ {icon}  CPU Load  █{$4}█{#keys}█{$2}",
+"percent": {
+    "type": 3
+}
+},
+{
+"type": "gpu",
+"key": "█{#cyan}█ {icon}  GPU       █{$4}█{#keys}█{$2}",
+"detectionMethod": "auto",
+        "driverSpecific": true,
+	"temp": true,
+"percent": {
+    "type": 3
+}
+},
+{
+"type": "disk",
+"key": "█{#cyan}█ {icon}  Disk      █{$4}█{#keys}█{$2}",
+"percent": {
+    "type": 3
+},
+"format": "{size-percentage-bar} {size-used} \/ {size-total} ({size-percentage}) - {filesystem}"
+},
+{
+  "type": "gamepad",
+  "key": "█{#cyan}█ {icon}  PAD       █{$4}█{#keys}█{$2}",
+  "ignores": [
+    "Microsoft X-Box 360 pad"
+  ]
+},
+{
+"type": "battery",
+"key": "█{#cyan}█ {icon}  Battery   █{$4}█{#keys}█{$2}"
+},
+{
+"type": "custom",
+"key": "█{#cyan}██████████████████{$1}█{#keys}█",
+"format": ""
+},
+
+// Desktop section with green color theme
+{
+"type": "custom",
+"key": "█{#green}██████████████████{$1}█{#keys}█\u001b[112D",
+"format": "{#bright_green} Desktop "
+},
+{
+"type": "de",
+"key": "█{#green}█ {icon}  Desktop   █{$4}█{#keys}█{$2}"
+},
+{
+"type": "wm",
+"key": "█{#green}█ {icon}  Session   █{$4}█{#keys}█{$2}"
+},
+{
+"type": "display",
+"key": "█{#green}█ {icon}  Display   █{$4}█{#keys}█{$2}",
+"compactType": "original-with-refresh-rate"
+},
+{
+"type": "gpu",
+"key": "█{#green}█ {icon}  G-Driver  █{$4}█{#keys}█{$2}",
+"format": "{driver}"
+},
+{
+"type": "custom",
+"key": "█{#green}██████████████████{$1}█{#keys}█",
+"format": ""
+},
+
+// Terminal section with yellow color theme
+{
+"type": "custom",
+"key": "█{#yellow}██████████████████{$1}█{#keys}█\u001b[112D",
+"format": "{#bright_yellow} Terminal "
+},
+{
+"type": "shell",
+"key": "█{#yellow}█ {icon}  Shell     █{$4}█{#keys}█{$2}"
+},
+{
+"type": "terminal",
+"key": "█{#yellow}█ {icon}  Terminal  █{$4}█{#keys}█{$2}"
+},
+{
+"type": "terminalfont",
+"key": "█{#yellow}█ {icon}  Term Font █{$4}█{#keys}█{$2}"
+},
+{
+"type": "packages",
+"key": "█{#yellow}█ {icon}  Packages  █{$4}█{#keys}█{$2}"
+},
+{
+"type": "custom",
+"key": "█{#yellow}██████████████████{$1}█{#keys}█",
+"format": ""
+},
+// Uptime section with magenta color theme
+{
+"type": "custom",
+"key": "█{#magenta}██████████████████{$1}█{#keys}█\u001b[112D",
+"format": "{#bright_magenta} Uptime "
+},
+{
+"type": "uptime",
+"key": "█{#magenta}█ {icon}  Uptime    █{$4}█{#keys}█{$2}"
+},
+{
+"condition": {
+"!system": "macOS"
+},
+"type": "disk",
+"keyIcon": "",
+"key": "█{#magenta}█ {icon}   OS Age    █{$4}█{#keys}█{$2}",
+"folders": "/",
+"format": "{days} days"
+},
+{
+"condition": {
+"system": "macOS"
+},
+"type": "disk",
+"keyIcon": "",
+"key": "█{#magenta}█ {icon}  OS Age    █{$4}█{#keys}█{$2}",
+"folders": "/System/Volumes/VM",
+"format": "{create-time:10} [{days} days]"
+},
+{
+"type": "custom",
+"key": "█{#magenta}██████████████████{$1}█{#keys}█",
+"format": ""
+},
+{
+"type": "custom",
+"key": "█{#keys}██████████████████{$5}█{#keys}█",
+"format": ""
+},
+"break",
+{
+            "type": "command",
+            "key": "😂 Dad Joke: ",
+            "keyColor": "13",
+            "text": "curl -s -H \"Accept: text/plain\" https://icanhazdadjoke.com/"
+}
+]
+}
