@@ -1,13 +1,17 @@
 {
 "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
 "logo": {
-"type": "kitty",
-"source": "/home/grahamd/.config/fastfetch/logo.png",
-"width": 30,
-"height": 15,
+"type": "chafa",
+"source": "/home/grahamd/.config/fastfetch/rick_cropped.png",
+"width": 43,
+"height": 37,
 "padding": {
-"top": 1,
-"left": 2
+"top": 2,
+"left": 0,
+"right": 0
+},
+"chafa": {
+"symbols": "ascii"
 }
 },
 "display": {
@@ -47,6 +51,10 @@
 "key": "║  {icon}  Fetched   ║{$3}║{$2}",
 "format": "{year}-{month-pretty}-{day-pretty} {hour-pretty}:{minute-pretty}:{second-pretty} {timezone-name}"
 },
+{
+"type": "weather",
+"key": "║  {icon}  Weather   ║{$3}║{$2}"
+},
 
 // Hardware section with cyan color theme
 {
@@ -76,6 +84,13 @@
 "text": "python3 -c \"import glob; f=glob.glob('/sys/bus/i2c/drivers/ee1004/*/eeprom'); s=open(f[0],'rb').read() if f else b''; cl=s[401]*0.125 if len(s)>405 else 10.0; print(f'{len(f)*16} GiB ({len(f)}x16GB) DDR4-3600 MT/s - CL{round(cl/0.5555)}-{round(s[402]*0.125/0.5555)}-{round(s[403]*0.125/0.5555)}-{round(s[405]*0.125/0.5555)} ({cl:.1f} ns latency)')\""
 },
 {
+"type": "swap",
+"key": "║{#bright_green}│ {icon}  SWAP      │{$4}│{#keys}║{$2}",
+"percent": {
+    "type": 3
+}
+},
+{
 "type": "cpu",
 "key": "║{#bright_green}│ {icon}  CPU       │{$4}│{#keys}║{$2}",
 "showPeCoreCount": true,
@@ -88,6 +103,10 @@
 "percent": {
     "type": 3
 }
+},
+{
+"type": "loadavg",
+"key": "║{#bright_green}│ {icon}  Load Avg  │{$4}│{#keys}║{$2}"
 },
 {
 "type": "gpu",
@@ -105,7 +124,11 @@
 "percent": {
     "type": 3
 },
-"format": "{size-percentage-bar} {size-used} \/ {size-total} ({size-percentage}) - {filesystem}"
+"format": "{size-percentage-bar} {size-used} \/ {size-total} ({size-percentage}) - {mountpoint} ({filesystem})"
+},
+{
+"type": "diskio",
+"key": "║{#bright_green}│ {icon}  Disk I/O  │{$4}│{#keys}║{$2}"
 },
 {
   "type": "gamepad",
@@ -215,6 +238,22 @@
 {
 "type": "custom",
 "key": "║{#dim_magenta}└──────────────┴{$1}┘{#keys}║",
+"format": ""
+},
+// Colors section with yellow color theme
+{
+"type": "custom",
+"key": "║{#yellow}┌──────────────┬{$1}┐{#keys}║\u001b[87D",
+"format": "{#yellow} Colors "
+},
+{
+"type": "colors",
+"key": "║{#yellow}│ {icon}  Palette   │{$4}│{#keys}║{$2}",
+"symbol": "circle"
+},
+{
+"type": "custom",
+"key": "║{#yellow}└──────────────┴{$1}┘{#keys}║",
 "format": ""
 },
 {
