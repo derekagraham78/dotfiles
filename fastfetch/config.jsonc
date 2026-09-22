@@ -4,7 +4,7 @@
 "type": "chafa",
 "source": "/home/grahamd/.config/fastfetch/rick_cropped.png",
 "width": 43,
-"height": 37,
+"height": 35,
 "padding": {
 "top": 2,
 "left": 0,
@@ -125,10 +125,6 @@
     "type": 3
 },
 "format": "{size-percentage-bar} {size-used} \/ {size-total} ({size-percentage}) - {mountpoint} ({filesystem})"
-},
-{
-"type": "diskio",
-"key": "║{#bright_green}│ {icon}  Disk I/O  │{$4}│{#keys}║{$2}"
 },
 {
   "type": "gamepad",
